@@ -4,8 +4,6 @@
 //Object Oriented Programming
 //Dr. Steil
 
-//hey
-
 #include<iostream>
 #include<string>
 #include"string.h"
