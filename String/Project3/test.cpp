@@ -5,3 +5,11 @@
 //Dr. Steil
 
 #include "string.h"
+
+void main() {
+	String s;
+	s.set(INT_MAX);
+	s.append('a');
+	s.append(s);
+	s.write(cout);
+}

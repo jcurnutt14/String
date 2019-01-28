@@ -27,13 +27,16 @@ String::String(const String& newString)
 	set(newString.pString);
 }
 
-String::String(int i) {
-
+String::String(int i) 
+{
+	pString = NULL;
+	set(i);
 }
 
 String::String(char c) 
 {
-
+	pString = NULL;
+	set(c);
 }
 
 String::~String()
@@ -55,8 +58,9 @@ void String::set(const char* const newString)
 	destroy();
 	if (newString != NULL)
 	{
-		pString = new char[strlen(newString) + 1];
-		strcpy(pString, newString);
+		int size = strlen(newString) + 1;
+		pString = new char[size];
+		strcpy_s(pString, size, newString);
 	}
 	else
 	{
@@ -71,12 +75,19 @@ void String::set(const String& newString)
 
 void String::set(int i) 
 {
+	destroy();
+	const int MAX_LENGTH = 16;
+	pString = new char[MAX_LENGTH];
 
+	_itoa_s(i, pString, MAX_LENGTH, 10);
 }
 
 void String::set(char c)
 {
-
+	destroy();
+	pString = new char[2];
+	pString[0] = c;
+	pString[1] = '\0';
 }
 
 bool String::contains(char c) 
@@ -120,7 +131,50 @@ void String::write(ostream& out)
 	}
 
 }
+int String::length() 
+{
+	int result = 0;
+	if (!isEmpty())
+	{
+		result = strlen(pString);
 
-int String::length() {
+	}
 
+	return result;
 }
+
+void String::append(String postfix)
+{
+	//could be appending to itself
+
+	int newLength = length() + postfix.length() + 1;
+	char* result = new char[newLength];
+	//start the result with this string
+	if (isEmpty())
+	{
+		result[0] = '\0';
+	}
+	else 
+	{
+		strcpy_s(result, newLength, pString);
+	}
+	//then add on the other string
+	if (postfix.isEmpty()) 
+	{
+		//do nothing
+	}
+	else
+	{
+		strcat_s(result, newLength, postfix.pString);
+	}
+	set(result);
+	
+}
+
+void String::prepend(String prefix)
+{
+	String result(prefix);
+	result.append(pString);
+	set(result);
+}
+
