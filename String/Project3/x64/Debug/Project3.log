@@ -1,0 +1,5 @@
+﻿  string.cpp
+c:\users\joncu\onedrive\documents\github\string\string\project3\string.cpp(61): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\joncu\onedrive\documents\github\string\string\project3\string.cpp(151): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Project3.vcxproj -> C:\Users\joncu\OneDrive\Documents\GitHub\String\String\x64\Debug\String.exe
+  Project3.vcxproj -> C:\Users\joncu\OneDrive\Documents\GitHub\String\String\x64\Debug\String.pdb (Partial PDB)

@@ -92,22 +92,34 @@ void String::set(char c)
 
 bool String::contains(char c) 
 {
-
+	bool result = false;
+	for (int b = 0; b < length(); b++) {
+		if (pString[b] == c) {
+			result = true;
+		}
+	}
+	return result;
 }
 
-bool String::contains(String s)
-{
-
-}
-
-bool String::contains(const char* const s)
-{
-
-}
+//bool String::contains(String s)
+//{
+//
+//}
+//
+//bool String::contains(const char* const s)
+//{
+//
+//}
 
 bool String::contains(int i)
 {
-
+	bool result = false;
+	for (int c = 0; c < length(); c++) {
+		if (pString[c] == i + 48) {
+			result = true;
+		}
+	}
+	return result;
 }
 
 void String::insert(String, char*, int, char, int)
